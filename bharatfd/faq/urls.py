@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import get_faq , create_faq
+from .views import get_faq , get_faq_by_language
 
 urlpatterns = [
     path('faq/', get_faq, name='faq'),
-    path('faq/create_faq/', create_faq, name='create_faq')
+    path('faq/<str:lang>/', get_faq_by_language, name='faq_by_language'),
 ]

@@ -10,12 +10,17 @@ def get_faq(request):
     serializer = FAQSerializer(faqs, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+@api_view(['GET'])
+def get_faq_by_language(request, lang):
+    faqs = FAQ.objects.all()
+    translated_faqs = []
 
+    for faq in faqs:
+        question, answer = faq.get_translation(lang)
+        translated_faqs.append({
+            'id': faq.id,
+            'question': question,
+            'answer': answer
+        })
 
-@api_view(['POST'])
-def create_faq(request):
-    serializer = FAQSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(translated_faqs, status=status.HTTP_200_OK)
