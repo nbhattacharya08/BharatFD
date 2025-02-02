@@ -24,3 +24,14 @@ def get_faq_by_language(request, lang):
         })
 
     return Response(translated_faqs, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+def add_faq(request):
+    serializer = FAQSerializer(data=request.data)
+    print(serializer)
+    if serializer.is_valid():
+        print("hello")
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    print(serializer.errors)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
