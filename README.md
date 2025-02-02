@@ -22,8 +22,9 @@ Superuser Account details:
 Features that I have Included:
 1. REST APIs to manage the FAQs
 2. WYSIWYG editor support in the admin panel
-3. Caching the translations to efficiently return multiple same translations
-4. Docker Containerization for easy deployment and isolation.
+3. Mulilingual support using Googletrans
+4. Caching the translations to efficiently return multiple same translations
+5. Docker Containerization for easy deployment and isolation.
 
 
 So lets seehow we can run this project:
