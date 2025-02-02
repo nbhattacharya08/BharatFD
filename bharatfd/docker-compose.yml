@@ -13,8 +13,21 @@ services:
       - redis
     environment:
       - DEBUG=1
+      - DJANGO_SETTINGS_MODULE=bharatfd.settings
 
   redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
+
+  test:
+    build: .
+    command: ./wait-for-it.sh web:8000 -- pytest
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - web
+    environment:
+      - DEBUG=1
+      - DJANGO_SETTINGS_MODULE=bharatfd.settings

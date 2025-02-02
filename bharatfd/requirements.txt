@@ -23,3 +23,5 @@ redis
 sniffio
 sqlparse
 typing_extensions
+pytest
+pytest-django
