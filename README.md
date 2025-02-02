@@ -19,6 +19,13 @@ Superuser Account details:
 2.password: 1234
 
 
+Features that I have Included:
+1. REST APIs to manage the FAQs
+2. WYSIWYG editor support in the admin panel
+3. Caching the translations to efficiently return multiple same translations
+4. Docker Containerization for easy deployment and isolation.
+
+
 So lets seehow we can run this project:
 
 
